@@ -1,8 +1,16 @@
+import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { IBM_Plex_Sans_Arabic } from "next/font/google";
+import { connectToMongoDB } from "../../lib/db";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = IBM_Plex_Sans_Arabic({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,9 +22,19 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  connectToMongoDB();
+  // const showNav = useState(false);
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <div className="h-full">
+            <Header />
+            <main className="min-h-full">{children}</main>
+            <Footer />
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
