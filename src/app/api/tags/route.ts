@@ -6,8 +6,9 @@ import Tag from "../../../../models/tagModel";
 
 const ObjectId = require("mongoose").Types.ObjectId;
 
-export const GET = async () => {
+export const GET = async (req: Request) => {
   try {
+    if (req.url.length < 0) return new Response("Error");
     const tags = await Tag.find();
     return new NextResponse(JSON.stringify(tags), { status: 200 });
   } catch (error: any) {
