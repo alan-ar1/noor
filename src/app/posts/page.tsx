@@ -4,7 +4,13 @@ import Pagination from "@/components/Pagination";
 import Select from "@/components/Select";
 import Post from "../../../models/postModel";
 import Tag from "../../../models/tagModel";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Noor",
+  description:
+    "نوور وێبسایتێکی قازانج نەویستە ئامانجمان بڵاوکردنەوەی زۆرترین زانیاریە دەربارەی ئاینی ئیسلام",
+};
 export default async function PostsPage({ searchParams }: any) {
   try {
     const tags: any[] = await Tag.find();

@@ -2,6 +2,13 @@ import SlideTags from "@/components/slider-common/SlideTags";
 import Image from "next/image";
 import Link from "next/link";
 import Post from "../../../../models/postModel";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Noor",
+  description:
+    "نوور وێبسایتێکی قازانج نەویستە ئامانجمان بڵاوکردنەوەی زۆرترین زانیاریە دەربارەی ئاینی ئیسلام",
+};
 
 export default async function page({ params }: any) {
   const { postSlug } = params;

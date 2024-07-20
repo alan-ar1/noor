@@ -5,9 +5,16 @@ import PostAddForm from "@/components/form/PostAddForm";
 import TagAddForm from "@/components/form/TagAddForm";
 import NewPopUp from "@/components/popup/NewPopUp";
 import { useAuth } from "@clerk/nextjs";
+import { Metadata } from "next";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
+
+export const metadata: Metadata = {
+  title: "Noor",
+  description:
+    "نوور وێبسایتێکی قازانج نەویستە ئامانجمان بڵاوکردنەوەی زۆرترین زانیاریە دەربارەی ئاینی ئیسلام",
+};
 
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
