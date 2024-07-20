@@ -12,7 +12,7 @@ export default function SlideContent({ slides }: SlideContentProps) {
         >
           <SlideRedirect />
           <div className="line-clamp-4 text-main">{slide.postBody}</div>
-          <SlideTags tags={slide.postTags} />
+          <SlideTags size={11} tags={slide.postTags} />
           <SlideFooter
             views={slide.views}
             timeToRead={slide.timeToRead}
