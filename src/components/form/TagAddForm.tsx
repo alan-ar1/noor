@@ -27,14 +27,11 @@ export default function TagAddForm({ setTags, showPopUp, setShowPopUp }: any) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ option: tag }),
       };
-      const newTagRes: any = await fetch(
-        "http://localhost:3000/api/tags",
-        requestOptions
-      );
+      const newTagRes: any = await fetch("/api/tags", requestOptions);
       const newTag = await newTagRes.json();
-      setShowPopUp(false); // Close the popup after successful submission
-      resetForm(); // Reset the form after successful submission
-      setTags((prevTags: any) => [...prevTags, newTag.tag]); // Add the new tag to the list of posts
+      setShowPopUp(false);
+      resetForm();
+      setTags((prevTags: any) => [...prevTags, newTag.tag]);
     } catch (error: any) {
       console.error("Error submitting form:", error.message);
     } finally {

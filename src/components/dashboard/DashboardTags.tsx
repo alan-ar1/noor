@@ -12,7 +12,7 @@ export default function DashboardTags({ tags, setTags }: any) {
     });
   };
   return (
-    <div className="flex gap-3 mt-2 flex-wrap flex-row">
+    <div className="flex text-white gap-3 mt-2 flex-wrap flex-row">
       {tags.map((tag: any, index: any) => (
         <div key={index}>
           <NewPopUp

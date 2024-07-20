@@ -13,7 +13,7 @@ export default function DashboardPosts({ posts, setPosts, tags }: any) {
   };
   return (
     <div>
-      <div className=" overflow-scroll  text-main ">
+      <div className="overflow-scroll text-main ">
         {posts.map((post: any, index: any) => (
           <div key={post.body}>
             <NewPopUp
@@ -45,8 +45,8 @@ export default function DashboardPosts({ posts, setPosts, tags }: any) {
               className="border-b-2 cursor-pointer border-main"
             >
               <div className="py-2">
-                <h1>{post.title}</h1>
-                <p className="w-full text-sm line-clamp-2">{post.body}</p>
+                <h1 className="font-bold">{post.title}</h1>
+                <p className="w-full text-xs line-clamp-2">{post.body}</p>
               </div>
             </div>
           </div>

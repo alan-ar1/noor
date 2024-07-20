@@ -66,7 +66,6 @@ export default function PostAddForm({
       onSubmit={handleSubmit}
       className="flex flex-col gap-2 !ltr"
     >
-      <h2 className="text-center text-green-400 font-bold">Add Todo</h2>
       <Field title={""} />
       <TextBoxField body={""} />
       <ImageField imgSrc={imgSrc} setImgSrc={setImgSrc} imgPath={""} />

@@ -1,20 +1,14 @@
 "use client";
+import Spinner from "@/components/Spinner";
 import DashboardPosts from "@/components/dashboard/DashboardPosts";
 import DashboardTags from "@/components/dashboard/DashboardTags";
 import PostAddForm from "@/components/form/PostAddForm";
 import TagAddForm from "@/components/form/TagAddForm";
 import NewPopUp from "@/components/popup/NewPopUp";
 import { useAuth } from "@clerk/nextjs";
-import { Metadata } from "next";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
-
-export const metadata: Metadata = {
-  title: "Noor",
-  description:
-    "نوور وێبسایتێکی قازانج نەویستە ئامانجمان بڵاوکردنەوەی زۆرترین زانیاریە دەربارەی ئاینی ئیسلام",
-};
 
 export default function Dashboard() {
   const [posts, setPosts] = useState([]);
@@ -35,10 +29,10 @@ export default function Dashboard() {
   }, [isLoaded, userId, router]);
 
   useEffect(() => {
+    setLoading(true);
     const fetchPosts = async () => {
-      setLoading(true);
       try {
-        const response = await fetch("http://localhost:3000/api/posts");
+        const response = await fetch("/api/posts");
         const data = await response.json();
         setPosts(data);
       } catch (error: any) {
@@ -47,24 +41,24 @@ export default function Dashboard() {
     };
     const fetchTags = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/tags");
+        const response = await fetch("/api/tags");
         const data = await response.json();
         setTags(data);
       } catch (error: any) {
         console.error("Error fetching posts:", error.message);
       }
+      setLoading(false);
     };
     fetchPosts();
     fetchTags();
-    setLoading(false);
   }, [isLoaded, setLoading]);
 
   if (!isLoaded || !userId || loading) {
-    return <div className="text-main">Loading...</div>;
+    return <Spinner />;
   }
 
   return (
-    <div className="border-main m-auto border-solid w-96 h-screen border-x-2 px-5 py-2">
+    <div className="border-main m-auto border-solid max-w-96 h-screen border-x-2 px-2 py-2">
       {togglePage === "posts" ? (
         <NewPopUp post={[]} showPopUp={showPopUp} setShowPopUp={setShowtPopUp}>
           <PostAddForm
