@@ -6,78 +6,30 @@ import Post from "../../../../models/postModel";
 
 const ObjectId = require("mongoose").Types.ObjectId;
 
-export const GET = async (req: Request) => {
-  // try {
-  //   const { searchParams } = new URL(req.url);
+export const GET = async () => {
+  try {
+    // const { searchParams } = new URL(req.url);
 
-  //   if (searchParams.get("query")) {
-  //     const searchTerm = searchParams.get("query");
-  //     const query = {
-  //       $or: [
-  //         { title: { $regex: searchTerm, $options: "i" } },
-  //         { body: { $regex: searchTerm, $options: "i" } },
-  //       ],
-  //     };
-  //     const searchedPosts = await Post.find(query);
+    // if (searchParams.get("query")) {
+    //   const searchTerm = searchParams.get("query");
+    //   const query = {
+    //     $or: [
+    //       { title: { $regex: searchTerm, $options: "i" } },
+    //       { body: { $regex: searchTerm, $options: "i" } },
+    //     ],
+    //   };
+    //   const searchedPosts = await Post.find(query);
 
-  //     return new NextResponse(JSON.stringify(searchedPosts), { status: 200 });
-  //   }
-  //   const posts = await Post.find();
-  //   console.log("getttttt");
-  return new NextResponse(
-    JSON.stringify([
-      {
-        _id: { $oid: "669d03cbbcf27ac946ddc117" },
-        title: "afaf",
-        body: "afewfewfe",
-        imgPath:
-          "https://utfs.io/f/43a4d9e8-aade-459e-97a4-c6a851126a16-4nmiu5.jpg",
-        tags: [{ label: "فەرموودەکان", value: "فەرموودەکان" }],
-        createdAt: { $date: { $numberLong: "1721566155913" } },
-        updatedAt: { $date: { $numberLong: "1721566155913" } },
-        __v: { $numberInt: "0" },
-      },
-      {
-        _id: { $oid: "669d03cbbcf27ac946ddc117" },
-        title: "afaf",
-        body: "afewfewfe",
-        imgPath:
-          "https://utfs.io/f/43a4d9e8-aade-459e-97a4-c6a851126a16-4nmiu5.jpg",
-        tags: [{ label: "فەرموودەکان", value: "فەرموودەکان" }],
-        createdAt: { $date: { $numberLong: "1721566155913" } },
-        updatedAt: { $date: { $numberLong: "1721566155913" } },
-        __v: { $numberInt: "0" },
-      },
-      {
-        _id: { $oid: "669d03cbbcf27ac946ddc117" },
-        title: "afaf",
-        body: "afewfewfe",
-        imgPath:
-          "https://utfs.io/f/43a4d9e8-aade-459e-97a4-c6a851126a16-4nmiu5.jpg",
-        tags: [{ label: "فەرموودەکان", value: "فەرموودەکان" }],
-        createdAt: { $date: { $numberLong: "1721566155913" } },
-        updatedAt: { $date: { $numberLong: "1721566155913" } },
-        __v: { $numberInt: "0" },
-      },
-      {
-        _id: { $oid: "669d03cbbcf27ac946ddc117" },
-        title: "afaf",
-        body: "afewfewfe",
-        imgPath:
-          "https://utfs.io/f/43a4d9e8-aade-459e-97a4-c6a851126a16-4nmiu5.jpg",
-        tags: [{ label: "فەرموودەکان", value: "فەرموودەکان" }],
-        createdAt: { $date: { $numberLong: "1721566155913" } },
-        updatedAt: { $date: { $numberLong: "1721566155913" } },
-        __v: { $numberInt: "0" },
-      },
-    ]),
-    { status: 200 }
-  );
-  // } catch (error: any) {
-  //   return new NextResponse("Error fetching posts: " + error.message, {
-  //     status: 500,
-  //   });
-  // }
+    //   return new NextResponse(JSON.stringify(searchedPosts), { status: 200 });
+    // }
+    const posts = await Post.find();
+    console.log("getttttt");
+    return new NextResponse(JSON.stringify(posts), { status: 200 });
+  } catch (error: any) {
+    return new NextResponse("Error fetching posts: " + error.message, {
+      status: 500,
+    });
+  }
 };
 
 export const POST = async (req: Request) => {
