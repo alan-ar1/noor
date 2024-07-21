@@ -30,31 +30,32 @@ export default function Dashboard() {
 
   useEffect(() => {
     setLoading(true);
-    const fetchPosts = async () => {
+
+    const fetchData = async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`
+        const [postsResponse, tagsResponse] = await Promise.all([
+          fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`),
+          fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`),
+        ]);
+
+        const [postsData, tagsData] = await Promise.all([
+          postsResponse.json(),
+          tagsResponse.json(),
+        ]);
+
+        setPosts(postsData);
+        setTags(tagsData);
+      } catch (error) {
+        console.error(
+          "Error fetching data:",
+          error instanceof Error ? error.message : String(error)
         );
-        const data = await response.json();
-        setPosts(data);
-      } catch (error: any) {
-        console.error("Error fetching posts:", error.message);
+      } finally {
+        setLoading(false);
       }
     };
-    const fetchTags = async () => {
-      try {
-        // const response = await fetch(
-        //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`
-        // );
-        // const data = await response.json();
-        setTags([]);
-      } catch (error: any) {
-        console.error("Error fetching posts:", error.message);
-      }
-      setLoading(false);
-    };
-    fetchPosts();
-    fetchTags();
+
+    fetchData();
   }, [isLoaded, setLoading]);
 
   if (!isLoaded || !userId || loading) {
