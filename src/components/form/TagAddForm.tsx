@@ -27,7 +27,10 @@ export default function TagAddForm({ setTags, showPopUp, setShowPopUp }: any) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ option: tag }),
       };
-      const newTagRes: any = await fetch("/api/tags", requestOptions);
+      const newTagRes: any = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`,
+        requestOptions
+      );
       const newTag = await newTagRes.json();
       setShowPopUp(false);
       resetForm();

@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { MultiValue } from "react-select";
 import Field from "./Field";
 import ImageField from "./ImageField";
 import SelectField from "./SelectField";
@@ -46,7 +45,7 @@ export default function PostAddForm({
         body: JSON.stringify({ ...payload, tags: selectedOptions }),
       };
       const newPostRes = await fetch(
-        "http://localhost:3000/api/posts",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`,
         requestOptions
       );
       const newPost = await newPostRes.json();

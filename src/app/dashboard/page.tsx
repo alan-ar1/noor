@@ -32,7 +32,9 @@ export default function Dashboard() {
     setLoading(true);
     const fetchPosts = async () => {
       try {
-        const response = await fetch("/api/posts");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`
+        );
         const data = await response.json();
         setPosts(data);
       } catch (error: any) {

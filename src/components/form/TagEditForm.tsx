@@ -46,7 +46,7 @@ export default function TagEditForm({
         }),
       };
       const updatedTagRes = await fetch(
-        `http://localhost:3000/api/tags`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`,
         requestOptions
       );
       const updatedTag = await updatedTagRes.json();
@@ -72,7 +72,7 @@ export default function TagEditForm({
         headers: { "Content-Type": "application/json" },
       };
       const updatedPostRes = await fetch(
-        `http://localhost:3000/api/tags?tagId=${tag._id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags?tagId=${tag._id}`,
         requestOptions
       );
       const deletedPost = await updatedPostRes.json();

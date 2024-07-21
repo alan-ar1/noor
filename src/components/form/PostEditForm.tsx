@@ -50,7 +50,7 @@ export default function PostEditForm({
         }),
       };
       const updatedPostRes = await fetch(
-        `http://localhost:3000/api/posts`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts`,
         requestOptions
       );
       const updatedPost = await updatedPostRes.json();
@@ -77,14 +77,14 @@ export default function PostEditForm({
         headers: { "Content-Type": "application/json" },
       };
       const updatedPostRes = await fetch(
-        `http://localhost:3000/api/posts?postId=${post._id}`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/posts?postId=${post._id}`,
         requestOptions
       );
       const deletedPost = await updatedPostRes.json();
       setShowPopUp(false);
       setPosts((prevPosts: any) =>
         prevPosts.filter((prevPost: any) => prevPost._id !== post._id)
-      ); // Add the new post to the list of posts
+      );
     } catch (error: any) {
       console.error("Error submitting form:", error.message);
     } finally {
