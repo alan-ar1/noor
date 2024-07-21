@@ -7,14 +7,53 @@ import Tag from "../../../../models/tagModel";
 const ObjectId = require("mongoose").Types.ObjectId;
 
 export const GET = async () => {
-  try {
-    const tags = await Tag.find();
-    return new NextResponse(JSON.stringify(tags), { status: 200 });
-  } catch (error: any) {
-    return new NextResponse("Error fetching tags: " + error.message, {
-      status: 500,
-    });
-  }
+  // try {
+  //   const tags = await Tag.find();
+  return new NextResponse(
+    JSON.stringify([
+      {
+        _id: { $oid: "669c1c775018c98d196bc8b0" },
+        option: { label: "ئایەتەکان", value: "ئایەتەکان" },
+        createdAt: { $date: { $numberLong: "1721506935350" } },
+        updatedAt: { $date: { $numberLong: "1721506935350" } },
+        __v: { $numberInt: "0" },
+      },
+      {
+        _id: { $oid: "669c1c775018c98d196bc8b0" },
+        option: { label: "ئایەتەکان", value: "ئایەتەکان" },
+        createdAt: { $date: { $numberLong: "1721506935350" } },
+        updatedAt: { $date: { $numberLong: "1721506935350" } },
+        __v: { $numberInt: "0" },
+      },
+      {
+        _id: { $oid: "669c1c775018c98d196bc8b0" },
+        option: { label: "ئایەتەکان", value: "ئایەتەکان" },
+        createdAt: { $date: { $numberLong: "1721506935350" } },
+        updatedAt: { $date: { $numberLong: "1721506935350" } },
+        __v: { $numberInt: "0" },
+      },
+      {
+        _id: { $oid: "669c1c775018c98d196bc8b0" },
+        option: { label: "ئایەتەکان", value: "ئایەتەکان" },
+        createdAt: { $date: { $numberLong: "1721506935350" } },
+        updatedAt: { $date: { $numberLong: "1721506935350" } },
+        __v: { $numberInt: "0" },
+      },
+      {
+        _id: { $oid: "669c1c775018c98d196bc8b0" },
+        option: { label: "ئایەتەکان", value: "ئایەتەکان" },
+        createdAt: { $date: { $numberLong: "1721506935350" } },
+        updatedAt: { $date: { $numberLong: "1721506935350" } },
+        __v: { $numberInt: "0" },
+      },
+    ]),
+    { status: 200 }
+  );
+  // } catch (error: any) {
+  //   return new NextResponse("Error fetching tags: " + error.message, {
+  //     status: 500,
+  //   });
+  // }
 };
 
 export const POST = async (req: Request) => {
