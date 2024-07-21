@@ -43,7 +43,9 @@ export default function Dashboard() {
     };
     const fetchTags = async () => {
       try {
-        const response = await fetch("/api/tags");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`
+        );
         const data = await response.json();
         setTags(data);
       } catch (error: any) {
@@ -59,6 +61,9 @@ export default function Dashboard() {
     return <Spinner />;
   }
 
+  if (!process.env.NEXT_PUBLIC_BASE_URL) {
+    return null;
+  }
   return (
     <div className="border-main m-auto border-solid max-w-96 h-screen border-x-2 px-2 py-2">
       {togglePage === "posts" ? (
