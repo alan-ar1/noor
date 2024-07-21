@@ -8,8 +8,6 @@ const ObjectId = require("mongoose").Types.ObjectId;
 
 export const GET = async (req: Request) => {
   try {
-    if (req.url.length < 0) return new Response("Error");
-
     const { searchParams } = new URL(req.url);
 
     if (searchParams.get("query")) {
