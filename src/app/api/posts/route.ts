@@ -23,7 +23,6 @@ export const GET = async () => {
     //   return new NextResponse(JSON.stringify(searchedPosts), { status: 200 });
     // }
     const posts = await Post.find();
-    console.log("getttttt");
     return new NextResponse(JSON.stringify(posts), { status: 200 });
   } catch (error: any) {
     return new NextResponse("Error fetching posts: " + error.message, {

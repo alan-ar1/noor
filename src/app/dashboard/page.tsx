@@ -43,11 +43,11 @@ export default function Dashboard() {
     };
     const fetchTags = async () => {
       try {
-        const response = await fetch(
-          `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`
-        );
-        const data = await response.json();
-        setTags(data);
+        // const response = await fetch(
+        //   `${process.env.NEXT_PUBLIC_BASE_URL}/api/tags`
+        // );
+        // const data = await response.json();
+        setTags([]);
       } catch (error: any) {
         console.error("Error fetching posts:", error.message);
       }
