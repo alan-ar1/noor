@@ -148,3 +148,5 @@ export const DELETE = async (req: Request) => {
     );
   }
 };
+
+export const runtime = "edge";

@@ -24,7 +24,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   connectToMongoDB();
-  // const showNav = useState(false);
   return (
     <ClerkProvider>
       <html lang="en">
